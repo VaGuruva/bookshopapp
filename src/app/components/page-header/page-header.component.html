@@ -1,1 +1,9 @@
-<p>page-header works!</p>
+<mat-toolbar class="header" color="primary">
+    <mat-toolbar-row>
+        <h1>Books App</h1>
+        <div class="nav-links">
+            <a mat-button [routerLink]="'/login'"> Login </a>
+            <a mat-button [routerLink]="'/create-account'"> Create Account </a>
+        </div>
+    </mat-toolbar-row>
+</mat-toolbar>
