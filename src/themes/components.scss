@@ -1,0 +1,9 @@
+@import '../pages/order-book/order-book.component.scss';
+@import '../app/components/page-footer/page-footer.component.scss';
+@import '../pages/landing-page/landing-page.component.scss';
+
+@mixin component-themes($theme) {
+    @include landing-page-theme($theme);
+    @include order-book-theme($theme);
+    @include page-footer-theme($theme); 
+}

@@ -1,11 +1,16 @@
-.footer{
+@import '~@angular/material/theming';
+@import '../../../themes/colours.scss';
+
+@mixin page-footer-theme($theme) {
+  .footer {
     position: fixed;
     bottom: 0px;
     left: 0px;
     right: 0px;
     color: #ffffff;
-	padding-top: 1.25rem 2rem;
-	background-color: #3f51b5;
-	display: flex;
-	flex-direction: column;
+    padding-top: 1.25rem 2rem;
+    background-color: $blue-main;
+    display: flex;
+    flex-direction: column;
+  }
 }

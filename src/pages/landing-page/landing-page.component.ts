@@ -13,42 +13,42 @@ export class LandingPageComponent implements OnInit {
       price: 'R12,67',
       publisher: 'BookMart',
       authors: ['Smith', 'Cohen'],
-      isbn: 'TRFS211565'
+      isbn: 'EWRFS211565'
     },
     {
       title: 'Falcon',
       price: 'R12,67',
       publisher: 'BookMart',
       authors: ['Smith', 'Cohen'],
-      isbn: 'TRFS211565'
+      isbn: 'URFS211565'
     },
     {
       title: 'Falcon',
       price: 'R12,67',
       publisher: 'BookMart',
       authors: ['Smith', 'Cohen'],
-      isbn: 'TRFS211565'
+      isbn: 'YRFS211565'
     },
     {
       title: 'Falcon',
       price: 'R12,67',
       publisher: 'BookMart',
       authors: ['Smith', 'Cohen'],
-      isbn: 'TRFS211565'
+      isbn: 'GRFS211565'
     },
     {
       title: 'Falcon',
       price: 'R12,67',
       publisher: 'BookMart',
       authors: ['Smith', 'Cohen'],
-      isbn: 'TRFS211565'
+      isbn: 'ZRFS211565'
     },
     {
       title: 'Falcon',
       price: 'R12,67',
       publisher: 'BookMart',
       authors: ['Smith', 'Cohen'],
-      isbn: 'TRFS211565'
+      isbn: 'ARFS211565'
     }
   ]
   constructor() { }

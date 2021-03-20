@@ -11,10 +11,12 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
 import { MatButtonModule } from '@angular/material/button';
-import { LandingPageComponent } from './pages/landing-page/landing-page.component';
+import { LandingPageComponent } from '../pages/landing-page/landing-page.component';
 import { BookComponent } from './components/book/book.component';
-import { OrderBookComponent } from './pages/order-book/order-book.component';
-
+import { OrderBookComponent } from '../pages/order-book/order-book.component';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatInputModule } from '@angular/material/input';
 @NgModule({
   declarations: [
     AppComponent,
@@ -32,7 +34,11 @@ import { OrderBookComponent } from './pages/order-book/order-book.component';
     MatIconModule,
     MatSidenavModule,
     MatListModule,
-    MatButtonModule
+    MatButtonModule,
+    MatFormFieldModule,
+    FormsModule,
+    ReactiveFormsModule,
+    MatInputModule
   ],
   providers: [],
   bootstrap: [AppComponent]
