@@ -1,0 +1,15 @@
+.book {
+  width: 160px;
+  height: 250px;
+  text-align: center;
+  .book-header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+  }
+  .book-body {
+    img {
+      border-radius: 5px;
+    }
+  }
+}

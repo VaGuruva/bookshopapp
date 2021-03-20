@@ -11,14 +11,18 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
 import { MatButtonModule } from '@angular/material/button';
-import { LandingPageComponent } from './components/landing-page/landing-page.component';
+import { LandingPageComponent } from './pages/landing-page/landing-page.component';
+import { BookComponent } from './components/book/book.component';
+import { OrderBookComponent } from './pages/order-book/order-book.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     PageHeaderComponent,
     PageFooterComponent,
-    LandingPageComponent
+    LandingPageComponent,
+    BookComponent,
+    OrderBookComponent
   ],
   imports: [
     BrowserModule,
