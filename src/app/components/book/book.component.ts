@@ -8,10 +8,11 @@ import { Router } from '@angular/router';
 })
 export class BookComponent implements OnInit {
   @Input() book: any;
+  imgUrl: string
   constructor(private router: Router) { }
 
   ngOnInit(): void {
-    console.log(this.book)
+    this.imgUrl = `http://ec2-3-17-150-219.us-east-2.compute.amazonaws.com:3000/books/${this.book.isbn}.jpeg`
   }
 
   orderBook(){

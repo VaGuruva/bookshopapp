@@ -1,20 +1,5 @@
-<div class="book">
-    <div class="book-header">
-        <div class="book-title">
-            {{book.title}}
-        </div>
-        <div class="book-price">
-            {{book.price}}
-        </div>
-    </div>
+<div class="book" (click)="orderBook()">
     <div class="book-body">
-        <img class="book-img" src="https://via.placeholder.com/150x200"/>
-    </div>
-    <div class="book-footer">
-        <button
-        mat-flat-button color="primary"
-        (click)="orderBook()">
-        Order Now
-      </button>
+        <img class="book-img" [src]="imgUrl"/>
     </div>
 </div>

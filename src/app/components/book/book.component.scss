@@ -1,14 +1,12 @@
 .book {
-  width: 160px;
-  height: 250px;
+  width: 10rem;
+  height: 15,625rem;
+  margin: .5rem;
+  cursor: pointer;
   text-align: center;
-  .book-header {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
-  }
   .book-body {
     img {
+      width: 100%;
       border-radius: 5px;
     }
   }

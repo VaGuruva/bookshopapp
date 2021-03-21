@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Apollo } from "apollo-angular";
+import { BOOKS_QUERY } from '../../app/queries/books';
 
 @Component({
   selector: 'app-landing-page',
@@ -7,52 +9,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LandingPageComponent implements OnInit {
 
-  books: any = [
-    {
-      title: 'Falcon',
-      price: 'R12,67',
-      publisher: 'BookMart',
-      authors: ['Smith', 'Cohen'],
-      isbn: 'EWRFS211565'
-    },
-    {
-      title: 'Falcon',
-      price: 'R12,67',
-      publisher: 'BookMart',
-      authors: ['Smith', 'Cohen'],
-      isbn: 'URFS211565'
-    },
-    {
-      title: 'Falcon',
-      price: 'R12,67',
-      publisher: 'BookMart',
-      authors: ['Smith', 'Cohen'],
-      isbn: 'YRFS211565'
-    },
-    {
-      title: 'Falcon',
-      price: 'R12,67',
-      publisher: 'BookMart',
-      authors: ['Smith', 'Cohen'],
-      isbn: 'GRFS211565'
-    },
-    {
-      title: 'Falcon',
-      price: 'R12,67',
-      publisher: 'BookMart',
-      authors: ['Smith', 'Cohen'],
-      isbn: 'ZRFS211565'
-    },
-    {
-      title: 'Falcon',
-      price: 'R12,67',
-      publisher: 'BookMart',
-      authors: ['Smith', 'Cohen'],
-      isbn: 'ARFS211565'
-    }
-  ]
-  constructor() { }
+  books: any[];
+  loading = true;
+
+  constructor(private apollo: Apollo) { }
 
   ngOnInit(): void {
+    this.apollo
+      .query<any>({
+        query: BOOKS_QUERY
+      })
+      .subscribe(
+        ({ data }) => {
+          this.books = data && data.books;
+        }
+      );
   }
 }
