@@ -1,6 +1,8 @@
 <div class="landing">
-    <p>Book headings</p>
-
+    <div class="heading">
+        <p>Welcome to the books app.</p>
+        <p>Order your books for the available selection.</p>
+    </div>
     <div class="card-row">
         <div *ngFor="let book of books">
             <app-book [book]="book"></app-book>
