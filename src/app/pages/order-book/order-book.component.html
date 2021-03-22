@@ -1,10 +1,10 @@
 <div class="order-form-wrapper">
   <div>
-    <img class="book-img" src="https://via.placeholder.com/282x450" />
+    <img class="book-img" [src]="imgUrl"/>
   </div>
   <form class="form" [formGroup]="bookOrderForm">
     <div>
-      Price {{'R54,76'}}
+      Price {{book.price}}
     </div>
     <mat-form-field appearance="fill">
       <mat-label>Quantity</mat-label>

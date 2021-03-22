@@ -4,6 +4,7 @@ export const BOOKS_QUERY = gql`
     {
         books{
             title
+            price
             isbn
             authors{
               name

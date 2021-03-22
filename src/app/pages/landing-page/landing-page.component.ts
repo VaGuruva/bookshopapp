@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Apollo } from "apollo-angular";
-import { Books } from 'src/app/models/book.model';
-import { BOOKS_QUERY } from '../../queries/books';
-import { BookStore } from '../../services/book.store.service';
+import { Books } from 'src/app/models';
+import { BOOKS_QUERY } from '../../queries';
+import { BookStore } from '../../services';
 
 @Component({
   selector: 'app-landing-page',
