@@ -1,9 +1,9 @@
 @import '~@angular/material/theming';
-@import '../../themes/colours.scss';
+@import '../../../themes/colours.scss';
 
 @mixin landing-page-theme($theme) {
   .landing {
-    background-image: url('../../assets/images/landing_page.jpg');
+    background-image: url('../../../assets/images/landing_page.jpg');
     width: 100%;
     height: 100vh;
     .heading {
