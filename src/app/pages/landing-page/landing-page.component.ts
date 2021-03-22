@@ -26,12 +26,12 @@ export class LandingPageComponent implements OnInit {
       .subscribe(
         ({ data }) => {
           this.books = data && data.books;
-          this.setBookData(data)
+          this.setBooksData(data)
         }
       );
   }
 
-  setBookData(data: Books): void{
+  setBooksData(data: Books): void{
     this.bookStoreService.set({
       books: data.books
     }, 'books update');

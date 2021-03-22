@@ -1,16 +1,30 @@
 @import '~@angular/material/theming';
+@import '../../../themes/colours.scss';
 
 @mixin order-book-theme($theme) {
   .order-form-wrapper {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     width: 100%;
     justify-content: center;
-    .form {
-      display: flex;
-      flex-direction: column;
-      width: 30%;
-      justify-content: flex-end;
+    align-items: center;
+    padding-top: 2rem;
+    .text{
+      font-size: 1rem;
+      font-weight: 400;
+    }
+    .authors-txt{
+      text-decoration: underline;
+    }
+    .book-img {
+      width: 282px;
+      height: 450px;
+    }
+    .order-btn{
+      button{
+        background: $blue-main;
+        color: $white;
+      }
     }
   }
 }
