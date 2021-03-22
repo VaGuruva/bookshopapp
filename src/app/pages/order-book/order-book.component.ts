@@ -3,6 +3,8 @@ import { ActivatedRoute } from '@angular/router';
 import { BookStore } from '../../services';
 import { Book } from 'src/app/models';
 import { Subscription } from 'rxjs';
+import { MatDialog } from '@angular/material/dialog';
+import { BuyBookComponent } from 'src/app/components/buy-book/buy-book.component';
 
 @Component({
   selector: 'app-order-book',
@@ -13,7 +15,8 @@ export class OrderBookComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private bookStoreService: BookStore
+    private bookStoreService: BookStore,
+    public dialog: MatDialog
   ) { }
 
   book: Book;
@@ -48,6 +51,17 @@ export class OrderBookComponent implements OnInit {
         this.imgUrl = this.setImgUrl(this.book.isbn);
       }
     })
+  }
+
+  openDialog() {
+    const dialogRef = this.dialog.open(BuyBookComponent, 
+      {
+        data: { isbn: this.book.isbn }
+      });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+    });
   }
 
   setImgUrl(isbn: string): string{

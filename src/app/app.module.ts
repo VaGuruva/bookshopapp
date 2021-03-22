@@ -19,6 +19,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { GraphQLModule } from './graphql.module';
 import { HttpClientModule } from '@angular/common/http';
+import { BuyBookComponent } from './components/buy-book/buy-book.component';
+import { MatDialogModule } from '@angular/material/dialog';
 @NgModule({
   declarations: [
     AppComponent,
@@ -26,7 +28,8 @@ import { HttpClientModule } from '@angular/common/http';
     PageFooterComponent,
     LandingPageComponent,
     BookComponent,
-    OrderBookComponent
+    OrderBookComponent,
+    BuyBookComponent
   ],
   imports: [
     BrowserModule,
@@ -42,8 +45,10 @@ import { HttpClientModule } from '@angular/common/http';
     ReactiveFormsModule,
     MatInputModule,
     GraphQLModule,
-    HttpClientModule
+    HttpClientModule,
+    MatDialogModule
   ],
+  entryComponents: [BuyBookComponent],
   providers: [],
   bootstrap: [AppComponent]
 })

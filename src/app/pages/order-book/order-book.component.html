@@ -1,20 +1,34 @@
 <div class="order-form-wrapper">
   <div class="text">
-    Book Title - <span>{{book.title}}</span>
+    Book Title - <span>{{book?.title}}</span>
   </div>
   <div class="text">
-    Book price - <span>R{{book.price}}</span>
+    Book price - <span>R{{book?.price}}</span>
   </div>
-  <div class="text authors-txt">
-    <span>Authors</span>
+
+  <div class="book-details">
+    <div>
+      <div class="text txt-undline">
+        <span>Publisher</span>
+      </div>
+      <div class="text">
+        <span>{{book?.publisher?.name}}</span>
+      </div>
+    </div>
+    <div>
+      <div class="text txt-undline">
+        <span>Authors</span>
+      </div>
+      <div *ngFor="let author of book.authors" class="text">
+        <span>{{author?.name}} {{author?.surname}}</span>
+      </div>
+    </div>
+
   </div>
-  <div *ngFor="let author of book.authors" class="text">
-    <span>{{author.name}} {{author.surname}}</span>
-  </div>
-  <div>
-    <img class="book-img" [src]="imgUrl" />
+  <div class="book-img">
+    <img  [src]="imgUrl" />
   </div>
   <div class="order-btn">
-    <button mat-button>Order Book</button>
+    <button mat-button (click)="openDialog()">Order Book</button>
   </div>
 </div>

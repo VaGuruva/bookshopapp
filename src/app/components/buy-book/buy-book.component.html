@@ -1,0 +1,15 @@
+<form [formGroup]="buyBookForm">
+    <mat-form-field appearance="outline">
+        <mat-label>Enter quantity</mat-label>
+        <input matInput placeholder="Placeholder" formControlName="quantity">
+        <mat-icon matSuffix>add_shopping_cart</mat-icon>
+        <mat-hint align="start">Please enter the number of book copies</mat-hint>
+        <mat-error *ngIf="buyBookForm.get('quantity').hasError('pattern')">
+          Please enter correct number <strong>format.</strong>
+        </mat-error>
+    </mat-form-field>
+    <div class="btns">
+        <button mat-button color="primary" (click)="confirmBookOrder()">Confirm</button>
+        <button mat-button color="accent" (click)="cancel()">Cancel</button>
+      </div>
+</form>
