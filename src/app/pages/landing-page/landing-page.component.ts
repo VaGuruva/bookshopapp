@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Apollo } from "apollo-angular";
+import { Subscription } from 'rxjs';
 import { Books } from 'src/app/models';
 import { BOOKS_QUERY } from '../../queries';
 import { BookStore } from '../../services';
@@ -13,11 +14,12 @@ export class LandingPageComponent implements OnInit {
 
   books: any[];
   loading = true;
+  booksSubscription: Subscription;
 
   constructor(private apollo: Apollo, private bookStoreService: BookStore) { }
 
   ngOnInit(): void {
-    this.apollo
+    this.booksSubscription = this.apollo
       .query<any>({
         query: BOOKS_QUERY
       })
@@ -33,5 +35,9 @@ export class LandingPageComponent implements OnInit {
     this.bookStoreService.set({
       books: data.books
     }, 'books update');
+  }
+
+  ngDestroy(): void{
+    if(this.booksSubscription) this.booksSubscription.unsubscribe();
   }
 }

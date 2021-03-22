@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { BookStore } from '../../services';
 import { Book } from 'src/app/models';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-order-book',
@@ -20,6 +21,8 @@ export class OrderBookComponent implements OnInit {
   bookOrderForm: FormGroup;
   book: Book;
   imgUrl: string
+  routeSubscription: Subscription;
+  bookServiceSubscription: Subscription;
 
   ngOnInit(): void {
     this.initForm();
@@ -27,7 +30,7 @@ export class OrderBookComponent implements OnInit {
   }
 
   getRouteParams(): void{
-    this.route.queryParams.subscribe(params => {
+    this.routeSubscription = this.route.queryParams.subscribe(params => {
       if(params){
         this.getBookDetails(params.isbn)
       }
@@ -35,7 +38,7 @@ export class OrderBookComponent implements OnInit {
   }
 
   getBookDetails(isbn: string): void{
-    this.bookStoreService.state$.subscribe(data => {
+    this.bookServiceSubscription = this.bookStoreService.state$.subscribe(data => {
       if(data){
         this.book = data.books.find(book => book.isbn == isbn);
         this.imgUrl = `http://ec2-3-17-150-219.us-east-2.compute.amazonaws.com:3000/books/${this.book.isbn}.jpeg`
@@ -52,5 +55,10 @@ export class OrderBookComponent implements OnInit {
       }],
       expectedPosition: ['']
     });
+  }
+
+  ngDestroy(): void{
+    if(this.bookServiceSubscription) this.bookServiceSubscription.unsubscribe();
+    if(this.routeSubscription) this.routeSubscription.unsubscribe();
   }
 }
