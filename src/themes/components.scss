@@ -1,9 +1,11 @@
 @import '../app/pages/order-book/order-book.component.scss';
 @import '../app/components/page-footer/page-footer.component.scss';
 @import '../app/pages/landing-page/landing-page.component.scss';
+@import '../app/pages/user-login/user-login.component.scss';
 
 @mixin component-themes($theme) {
     @include landing-page-theme($theme);
     @include order-book-theme($theme);
     @include page-footer-theme($theme); 
+    @include user-login-theme($theme);
 }

@@ -23,6 +23,7 @@ import { BuyBookComponent } from './components/buy-book/buy-book.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { ViewOrdersComponent } from './pages/view-orders/view-orders.component';
 import { MatTableModule } from '@angular/material/table';
+import { UserLoginComponent } from './pages/user-login/user-login.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -32,7 +33,8 @@ import { MatTableModule } from '@angular/material/table';
     BookComponent,
     OrderBookComponent,
     BuyBookComponent,
-    ViewOrdersComponent
+    ViewOrdersComponent,
+    UserLoginComponent
   ],
   imports: [
     BrowserModule,
@@ -52,7 +54,9 @@ import { MatTableModule } from '@angular/material/table';
     MatDialogModule,
     MatTableModule
   ],
-  entryComponents: [BuyBookComponent],
+  entryComponents: [
+    BuyBookComponent
+  ],
   providers: [],
   bootstrap: [AppComponent]
 })
