@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { BookStore } from '../../services';
-import { Book } from 'src/app/models';
+import { Book, Order } from 'src/app/models';
 import { Subscription } from 'rxjs';
 import { MatDialog } from '@angular/material/dialog';
 import { BuyBookComponent } from 'src/app/components/buy-book/buy-book.component';
@@ -56,12 +56,23 @@ export class OrderBookComponent implements OnInit {
   openDialog() {
     const dialogRef = this.dialog.open(BuyBookComponent, 
       {
-        data: { isbn: this.book.isbn }
+        data: { isbn: this.book.isbn, price: this.book.price }
       });
 
     dialogRef.afterClosed().subscribe(result => {
       console.log(`Dialog result: ${result}`);
+      this.sendBookOrder(result);
     });
+  }
+
+  sendBookOrder(data: any): void{
+    const order = {
+      quantity: data.orderQuantity,
+      isbn: this.selectedBook.isbn,
+      total: data.orderValue,
+      username: "username from session"
+    } as Order
+    //send order to api and redirect to list page
   }
 
   setImgUrl(isbn: string): string{

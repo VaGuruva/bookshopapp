@@ -1,4 +1,4 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, EventEmitter, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
@@ -12,6 +12,8 @@ export class BuyBookComponent implements OnInit {
   buyBookForm: FormGroup;
   numberPattern: string = '[1-9]\\d*$';
   bookIsbn: string;
+  price: string;
+  totalPrice: string = "0"
 
   constructor(
     public dialogRef: MatDialogRef<BuyBookComponent>,
@@ -21,12 +23,13 @@ export class BuyBookComponent implements OnInit {
 
   ngOnInit(): void {
     this.bookIsbn = this.data.isbn;
+    this.price = this.data.price;
     this.initForm();
   }
 
   initForm(): void{
     this.buyBookForm = this.formBuilder.group({
-      quantity: ["", {
+      quantity: ["0", {
         validators: [
           Validators.pattern(this.numberPattern)
         ]
@@ -34,8 +37,19 @@ export class BuyBookComponent implements OnInit {
     });
   }
 
+  calculatePrice(): void{
+    if(this.buyBookForm.get('quantity').hasError('pattern')) return;
+    let qty = this.buyBookForm.get('quantity').value?  parseInt(this.buyBookForm.get('quantity').value):0;
+    this.totalPrice = (qty*parseFloat(this.price)).toFixed(2).toString();
+  }
+
   confirmBookOrder(): void{
-    this.dialogRef.close({isbn: this.bookIsbn, orderQuantity: ""});
+    if(this.buyBookForm.get('quantity').hasError('pattern')) return;
+    this.dialogRef.close(JSON.stringify({
+      isbn: this.bookIsbn, 
+      orderQuantity: this.buyBookForm.get('quantity').value,
+      orderValue: this.totalPrice
+    }));
   }
 
   cancel(): void{

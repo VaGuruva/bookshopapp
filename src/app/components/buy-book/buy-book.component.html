@@ -1,7 +1,10 @@
 <form [formGroup]="buyBookForm">
+  <div class="total">
+    Total price = R {{totalPrice}}
+  </div>
     <mat-form-field appearance="outline">
         <mat-label>Enter quantity</mat-label>
-        <input matInput placeholder="Placeholder" formControlName="quantity">
+        <input matInput placeholder="Placeholder" formControlName="quantity" (keyup)="calculatePrice()">
         <mat-icon matSuffix>add_shopping_cart</mat-icon>
         <mat-hint align="start">Please enter the number of book copies</mat-hint>
         <mat-error *ngIf="buyBookForm.get('quantity').hasError('pattern')">
