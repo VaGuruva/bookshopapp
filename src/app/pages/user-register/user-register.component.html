@@ -1,0 +1,43 @@
+<div class="login-form">
+    <div class="form-container">
+        <div class="form-header">
+            <h2>User Register</h2>
+        </div>
+        <div class="form-wrapper">
+            <form class="user-form" [formGroup]="userRegisterForm">
+                <mat-form-field appearance="outline">
+                    <mat-label>Enter name</mat-label>
+                    <input matInput placeholder="Placeholder" formControlName="name" type="text">
+                    <mat-icon matSuffix>person</mat-icon>
+                    <mat-hint align="start">Please enter name.</mat-hint>
+                    <mat-error *ngIf="userRegisterForm.get('email').hasError('email')">
+                        Please enter correct email <strong>format.</strong>
+                    </mat-error>
+                </mat-form-field>
+                <mat-form-field appearance="outline">
+                    <mat-label>Enter email</mat-label>
+                    <input matInput placeholder="Placeholder" formControlName="email" type="email">
+                    <mat-icon matSuffix>email</mat-icon>
+                    <mat-hint align="start">Please enter email address.</mat-hint>
+                    <mat-error *ngIf="userRegisterForm.get('email').hasError('email')">
+                        Please enter correct email <strong>format.</strong>
+                    </mat-error>
+                </mat-form-field>
+                <mat-form-field appearance="outline">
+                    <mat-label>Enter password</mat-label>
+                    <input matInput placeholder="Placeholder" formControlName="password" type="password">
+                    <mat-icon matSuffix>password</mat-icon>
+                    <mat-hint align="start">Please enter password.</mat-hint>
+                    <mat-error *ngIf="userRegisterForm.get('password').hasError('required')">
+                        Please enter <strong>password.</strong>
+                    </mat-error>
+                </mat-form-field>
+                <div class="submit-btn">
+                    <button mat-button color="primary" (click)="submit()">Create Account</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+

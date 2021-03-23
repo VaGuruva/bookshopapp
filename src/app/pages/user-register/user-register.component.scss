@@ -1,0 +1,37 @@
+@import '~@angular/material/theming';
+@import '../../../themes/colours.scss';
+
+@mixin user-login-theme($theme) {
+  .login-form {
+    display: flex;
+    justify-content: center;
+    padding-top: 1rem;
+    .form-container {
+      width: 40%;
+      border: 1px solid $light-grey;
+      border-radius: 5px;
+      padding: 1rem;
+      .form-header {
+        display: flex;
+        justify-content: center;
+        margin: 1rem 0;
+      }
+      .form-wrapper {
+        display: flex;
+        justify-content: center;
+        .user-form {
+          display: flex;
+          flex-direction: column;
+          width: 100%;
+          .submit-btn {
+              padding-top: .825rem;
+            button {
+              background: $blue-main;
+              color: $white;
+            }
+          }
+        }
+      }
+    }
+  }
+}

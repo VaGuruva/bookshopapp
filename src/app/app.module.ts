@@ -24,6 +24,8 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { ViewOrdersComponent } from './pages/view-orders/view-orders.component';
 import { MatTableModule } from '@angular/material/table';
 import { UserLoginComponent } from './pages/user-login/user-login.component';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { UserRegisterComponent } from './pages/user-register/user-register.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -34,7 +36,8 @@ import { UserLoginComponent } from './pages/user-login/user-login.component';
     OrderBookComponent,
     BuyBookComponent,
     ViewOrdersComponent,
-    UserLoginComponent
+    UserLoginComponent,
+    UserRegisterComponent
   ],
   imports: [
     BrowserModule,
@@ -52,7 +55,8 @@ import { UserLoginComponent } from './pages/user-login/user-login.component';
     GraphQLModule,
     HttpClientModule,
     MatDialogModule,
-    MatTableModule
+    MatTableModule,
+    MatSnackBarModule
   ],
   entryComponents: [
     BuyBookComponent

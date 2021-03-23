@@ -4,12 +4,14 @@ import { LandingPageComponent } from './pages/landing-page/landing-page.componen
 import { OrderBookComponent } from './pages/order-book/order-book.component';
 import { ViewOrdersComponent } from './pages/view-orders/view-orders.component';
 import { UserLoginComponent } from './pages/user-login/user-login.component';
+import { UserRegisterComponent } from './pages/user-register/user-register.component';
 
 const routes: Routes = [
   { path: '', component: LandingPageComponent },
   { path: 'order', component: OrderBookComponent },
   { path: 'view-orders', component: ViewOrdersComponent },
   { path: 'login', component: UserLoginComponent },
+  { path: 'register', component: UserRegisterComponent },
 ];
 
 @NgModule({

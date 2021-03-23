@@ -1,18 +1,18 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { USER_LOGIN } from '../../mutations';
+import { CREATE_USER } from '../../mutations';
 import { Apollo } from "apollo-angular";
 import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
-  selector: 'app-user-login',
-  templateUrl: './user-login.component.html',
-  styleUrls: ['./user-login.component.scss']
+  selector: 'app-user-register',
+  templateUrl: './user-register.component.html',
+  styleUrls: ['./user-register.component.scss']
 })
-export class UserLoginComponent implements OnInit {
+export class UserRegisterComponent implements OnInit {
 
-  userLoginForm: FormGroup;
+  userRegisterForm: FormGroup;
 
   constructor(
     private formBuilder: FormBuilder, 
@@ -26,7 +26,12 @@ export class UserLoginComponent implements OnInit {
   }
 
   initForm(): void{
-    this.userLoginForm = this.formBuilder.group({
+    this.userRegisterForm = this.formBuilder.group({
+      name: ["", {
+        validators: [
+          Validators.required
+        ]
+      }],
       email: ["", {
         validators: [
           Validators.required,
@@ -42,13 +47,14 @@ export class UserLoginComponent implements OnInit {
   }
 
   submit(){
-    if(this.userLoginForm.status=='INVALID') return;
+    if(this.userRegisterForm.status=='INVALID') return;
 
     this.apollo.mutate({
-      mutation: USER_LOGIN,
+      mutation: CREATE_USER,
       variables: {
-        email: this.userLoginForm.get('email').value,
-        password: this.userLoginForm.get('password').value
+        name: this.userRegisterForm.get('name').value,
+        email: this.userRegisterForm.get('email').value,
+        password: this.userRegisterForm.get('password').value
       }
     }).subscribe(({ data }) => {
       if(data){
