@@ -46,9 +46,10 @@ export class BuyBookComponent implements OnInit {
   confirmBookOrder(): void{
     if(this.buyBookForm.get('quantity').hasError('pattern')) return;
     this.dialogRef.close(JSON.stringify({
-      isbn: this.bookIsbn, 
-      orderQuantity: this.buyBookForm.get('quantity').value,
-      orderValue: this.totalPrice
+      quantity: this.buyBookForm.get('quantity').value,
+      book: this.bookIsbn, 
+      total: this.totalPrice,
+      user: 'email.com'
     }));
   }
 

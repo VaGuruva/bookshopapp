@@ -64,25 +64,18 @@ export class OrderBookComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(result => {
       console.log(`Dialog result: ${result}`);
-      this.sendBookOrder(result);
+      if(result){
+        this.orderBook(JSON.parse(result));
+      }
+      
     });
-  }
-
-  sendBookOrder(data: any): void{
-    const order = {
-      quantity: data.orderQuantity,
-      book: this.selectedBook.isbn,
-      total: data.orderValue,
-      user: "user email from session"
-    } as Order
-    this.orderBook(order)
   }
 
   setImgUrl(isbn: string): string{
     return `http://ec2-3-17-150-219.us-east-2.compute.amazonaws.com:3000/books/${isbn}.jpeg`
   }
 
-  orderBook(orderInfo: any) {
+  orderBook(orderInfo: Order) {
     this.apollo.mutate({
       mutation: CREATE_ORDER,
       variables: orderInfo
