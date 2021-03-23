@@ -21,6 +21,8 @@ import { GraphQLModule } from './graphql.module';
 import { HttpClientModule } from '@angular/common/http';
 import { BuyBookComponent } from './components/buy-book/buy-book.component';
 import { MatDialogModule } from '@angular/material/dialog';
+import { ViewOrdersComponent } from './pages/view-orders/view-orders.component';
+import { MatTableModule } from '@angular/material/table';
 @NgModule({
   declarations: [
     AppComponent,
@@ -29,7 +31,8 @@ import { MatDialogModule } from '@angular/material/dialog';
     LandingPageComponent,
     BookComponent,
     OrderBookComponent,
-    BuyBookComponent
+    BuyBookComponent,
+    ViewOrdersComponent
   ],
   imports: [
     BrowserModule,
@@ -46,7 +49,8 @@ import { MatDialogModule } from '@angular/material/dialog';
     MatInputModule,
     GraphQLModule,
     HttpClientModule,
-    MatDialogModule
+    MatDialogModule,
+    MatTableModule
   ],
   entryComponents: [BuyBookComponent],
   providers: [],

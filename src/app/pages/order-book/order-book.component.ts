@@ -7,6 +7,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { BuyBookComponent } from 'src/app/components/buy-book/buy-book.component';
 import { CREATE_ORDER } from '../../mutations';
 import { Apollo } from "apollo-angular";
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-order-book',
@@ -19,7 +20,8 @@ export class OrderBookComponent implements OnInit {
     private route: ActivatedRoute,
     private bookStoreService: BookStore,
     public dialog: MatDialog,
-    private apollo: Apollo
+    private apollo: Apollo,
+    private router: Router
   ) { }
 
   book: Book;
@@ -80,10 +82,12 @@ export class OrderBookComponent implements OnInit {
       mutation: CREATE_ORDER,
       variables: orderInfo
     }).subscribe(({ data }) => {
-      console.log('got data', data);
-      //on success redirect to order list page
+      console.log(data);
+      if(data){
+        this.router.navigate(['/view-orders']);
+      }
     },(error) => {
-      console.log('there was an error sending the query', error);
+      console.log('Error occured sending book order. Please try again later', error);
     });
   }
 
