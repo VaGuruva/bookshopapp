@@ -10,8 +10,8 @@
                     <input matInput placeholder="Placeholder" formControlName="email" type="email">
                     <mat-icon matSuffix>email</mat-icon>
                     <mat-hint align="start">Please enter email address.</mat-hint>
-                    <mat-error *ngIf="false">
-                        Please enter correct number <strong>format.</strong>
+                    <mat-error *ngIf="userLoginForm.get('email').hasError('email')">
+                        Please enter correct email <strong>format.</strong>
                     </mat-error>
                 </mat-form-field>
                 <mat-form-field appearance="outline">
@@ -19,12 +19,12 @@
                     <input matInput placeholder="Placeholder" formControlName="password" type="password">
                     <mat-icon matSuffix>password</mat-icon>
                     <mat-hint align="start">Please enter password.</mat-hint>
-                    <mat-error *ngIf="false">
-                        Please enter correct number <strong>format.</strong>
+                    <mat-error *ngIf="userLoginForm.get('password').hasError('required')">
+                        Please enter <strong>password.</strong>
                     </mat-error>
                 </mat-form-field>
                 <div class="submit-btn">
-                    <button mat-button color="primary">Login</button>
+                    <button mat-button color="primary" (click)="submit()">Login</button>
                 </div>
             </form>
         </div>
