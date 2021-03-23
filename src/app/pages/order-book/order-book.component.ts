@@ -5,6 +5,8 @@ import { Book, Order } from 'src/app/models';
 import { Subscription } from 'rxjs';
 import { MatDialog } from '@angular/material/dialog';
 import { BuyBookComponent } from 'src/app/components/buy-book/buy-book.component';
+import { CREATE_ORDER } from '../../mutations';
+import { Apollo } from "apollo-angular";
 
 @Component({
   selector: 'app-order-book',
@@ -16,7 +18,8 @@ export class OrderBookComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private bookStoreService: BookStore,
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    private apollo: Apollo
   ) { }
 
   book: Book;
@@ -68,15 +71,27 @@ export class OrderBookComponent implements OnInit {
   sendBookOrder(data: any): void{
     const order = {
       quantity: data.orderQuantity,
-      isbn: this.selectedBook.isbn,
+      book: this.selectedBook.isbn,
       total: data.orderValue,
-      username: "username from session"
+      user: "user email from session"
     } as Order
-    //send order to api and redirect to list page
+    this.orderBook(order)
   }
 
   setImgUrl(isbn: string): string{
     return `http://ec2-3-17-150-219.us-east-2.compute.amazonaws.com:3000/books/${isbn}.jpeg`
+  }
+
+  orderBook(orderInfo: any) {
+    this.apollo.mutate({
+      mutation: CREATE_ORDER,
+      variables: orderInfo
+    }).subscribe(({ data }) => {
+      console.log('got data', data);
+      //on success redirect to order list page
+    },(error) => {
+      console.log('there was an error sending the query', error);
+    });
   }
 
   ngDestroy(): void{

@@ -1,6 +1,6 @@
 export class Order {
     quantity: string;
-    isbn: string;
+    book: string;
     total: string;
-    username: string;
+    user: string;
 }
