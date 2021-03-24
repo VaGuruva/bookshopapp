@@ -44,7 +44,7 @@ export class OrderBookComponent implements OnInit {
   }
 
   getBookDetails(isbn: string): void{
-    if(this.selectedBook.isbn == isbn){
+    if(this.selectedBook && this.selectedBook.isbn == isbn){
       this.book = this.selectedBook;
       this.imgUrl = this.imgUrl = this.setImgUrl(this.selectedBook.isbn);
       return;
@@ -52,6 +52,7 @@ export class OrderBookComponent implements OnInit {
     this.bookServiceSubscription = this.bookStoreService.state$.subscribe(data => {
       if(data){
         this.book = data.books.find(book => book.isbn == isbn);
+
         localStorage.setItem('selectedBook', JSON.stringify(this.book));
         this.imgUrl = this.setImgUrl(this.book.isbn);
       }

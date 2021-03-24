@@ -1,6 +1,7 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { AuthService } from '../../auth'
 
 @Component({
   selector: 'app-buy-book',
@@ -18,7 +19,8 @@ export class BuyBookComponent implements OnInit {
   constructor(
     public dialogRef: MatDialogRef<BuyBookComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private authService: AuthService
   ) { }
 
   ngOnInit(): void {
@@ -45,11 +47,13 @@ export class BuyBookComponent implements OnInit {
 
   confirmBookOrder(): void{
     if(this.buyBookForm.get('quantity').hasError('pattern')) return;
+    const user = JSON.parse(localStorage.getItem('user'));
+    
     this.dialogRef.close(JSON.stringify({
       quantity: this.buyBookForm.get('quantity').value,
       book: this.bookIsbn, 
       total: this.totalPrice,
-      user: 'email.com'
+      user: user.email
     }));
   }
 

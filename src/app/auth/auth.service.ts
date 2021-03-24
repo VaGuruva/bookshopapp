@@ -15,4 +15,8 @@ export class AuthService {
     }
     return false;
   }
+
+  getUser(): any{
+    return JSON.parse(localStorage.getItem('user'));
+  }
 }

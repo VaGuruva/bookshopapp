@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { GET_ORDERS_BY_USER } from '../../queries';
 import { Apollo } from "apollo-angular";
 import { Subscription } from 'rxjs';
+import { AuthService } from '../../auth'
 
 @Component({
   selector: 'app-view-orders',
@@ -14,18 +15,19 @@ export class ViewOrdersComponent implements OnInit {
   dataSource: any[] = [];
   ordersSubscription: Subscription;
 
-  constructor(private apollo: Apollo) { }
+  constructor(private apollo: Apollo, private authService: AuthService) { }
 
   ngOnInit(): void {
     this.getOrders();
   }
 
   getOrders(): void{
+    const user = this.authService.getUser();
     this.ordersSubscription = this.apollo
       .query<any>({
         query: GET_ORDERS_BY_USER,
         variables: {
-          email: "email.com",//To user logged in user details
+          email: user.email
         }
       })
       .subscribe(
