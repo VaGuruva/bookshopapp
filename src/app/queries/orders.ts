@@ -5,6 +5,7 @@ export const GET_ORDERS_BY_USER = gql`
     orderByUser(email: $email) {
         quantity
         total
+        number
         book{
             title
             authors{

@@ -1,23 +1,29 @@
 <div class="heading">
-  <span>Your list ordered books</span>
+  <span>Your list ordered books (please refresh page to view orders)</span>
 </div>
 <mat-table [dataSource]="dataSource" class="mat-elevation-z8">
-    <!-- Position Column -->
+    <!-- Book Tiltle Column -->
     <ng-container matColumnDef="title">
       <mat-header-cell *matHeaderCellDef>Book Tiltle</mat-header-cell>
       <mat-cell *matCellDef="let element"> {{element.book.title}} </mat-cell>
     </ng-container>
   
-    <!-- Name Column -->
+    <!-- Order Qunatity Column -->
     <ng-container matColumnDef="quantity">
       <mat-header-cell *matHeaderCellDef> Order Qunatity</mat-header-cell>
       <mat-cell *matCellDef="let element"> {{element.quantity}} </mat-cell>
     </ng-container>
   
-    <!-- Weight Column -->
+    <!-- Order Value Column -->
     <ng-container matColumnDef="total">
       <mat-header-cell *matHeaderCellDef> Order Value </mat-header-cell>
       <mat-cell *matCellDef="let element">R{{element.total}} </mat-cell>
+    </ng-container>
+
+    <!-- Delete Column -->
+    <ng-container matColumnDef="delete">
+      <mat-header-cell *matHeaderCellDef> Delete </mat-header-cell>
+      <mat-cell *matCellDef="let element"><mat-icon class="delete" (click)="deleteOrder(element)" matSuffix>delete_forever</mat-icon></mat-cell>
     </ng-container>
   
     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>

@@ -57,7 +57,7 @@ export class UserLoginComponent implements OnInit {
         this.router.navigate(['/']);
       }
     },(error) => {
-      this.snackBar.open(`${error}, Please Try Again`, null, {
+      this.snackBar.open(`Error occured, Please Try Again`, null, {
         duration: 2000,
       });
     });

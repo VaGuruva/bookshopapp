@@ -8,6 +8,7 @@ import { BuyBookComponent } from 'src/app/components/buy-book/buy-book.component
 import { CREATE_ORDER } from '../../mutations';
 import { Apollo } from "apollo-angular";
 import { Router } from '@angular/router';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-order-book',
@@ -21,7 +22,8 @@ export class OrderBookComponent implements OnInit {
     private bookStoreService: BookStore,
     public dialog: MatDialog,
     private apollo: Apollo,
-    private router: Router
+    private router: Router,
+    private snackBar: MatSnackBar
   ) { }
 
   book: Book;
@@ -83,13 +85,13 @@ export class OrderBookComponent implements OnInit {
       mutation: CREATE_ORDER,
       variables: orderInfo
     }).subscribe(({ data }) => {
-      console.log(data);
-      if(data){
-        this.router.navigate(['/view-orders']);
-      }
     },(error) => {
-      console.log('Error occured sending book order. Please try again later', error);
-    });
+      this.snackBar.open('Error occured sending book order. Please try again later', null, {
+        duration: 2000,
+      });
+    },
+    () => this.router.navigate(['/view-orders'])
+    );
   }
 
   ngDestroy(): void{

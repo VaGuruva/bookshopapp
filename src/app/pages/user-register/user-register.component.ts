@@ -63,7 +63,7 @@ export class UserRegisterComponent implements OnInit {
         this.router.navigate(['/']);
       }
     },(error) => {
-      this.snackBar.open(`${error}, Please Try Again`, null, {
+      this.snackBar.open(`Registration error, Please Try Again`, null, {
         duration: 2000,
       });
     });

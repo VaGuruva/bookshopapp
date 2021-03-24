@@ -14,3 +14,11 @@ export const CREATE_ORDER = gql`
     }
   }
 `;
+
+export const DELETE_ORDER = gql`
+  mutation DeleteOrder($number: String) {
+    deleteOrder(number: $number) {
+      deletedCount
+    }
+  }
+`;
