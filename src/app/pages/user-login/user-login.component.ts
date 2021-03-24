@@ -52,7 +52,8 @@ export class UserLoginComponent implements OnInit {
       }
     }).subscribe(({ data }) => {
       if(data){
-        localStorage.setItem('user', JSON.stringify(data));
+        const user = JSON.parse(JSON.stringify(data));
+        localStorage.setItem('user', JSON.stringify(user.login));
         this.router.navigate(['/']);
       }
     },(error) => {

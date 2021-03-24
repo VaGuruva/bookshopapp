@@ -26,6 +26,8 @@ import { MatTableModule } from '@angular/material/table';
 import { UserLoginComponent } from './pages/user-login/user-login.component';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { UserRegisterComponent } from './pages/user-register/user-register.component';
+import { JwtModule } from "@auth0/angular-jwt";
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -56,7 +58,10 @@ import { UserRegisterComponent } from './pages/user-register/user-register.compo
     HttpClientModule,
     MatDialogModule,
     MatTableModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    JwtModule.forRoot({
+      config: { },
+    })
   ],
   entryComponents: [
     BuyBookComponent
