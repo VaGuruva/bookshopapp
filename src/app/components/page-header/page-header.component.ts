@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from '../../auth'
 
 @Component({
   selector: 'app-page-header',
@@ -7,9 +8,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PageHeaderComponent implements OnInit {
 
-  constructor() { }
+  constructor(private authService: AuthService) { }
+
+  loggedIn: boolean = false;
 
   ngOnInit(): void {
+    this.authService.user.subscribe(user => {
+      this.loggedIn = (user && user.token)? true : false;
+    })
   }
 
+  clearUser(): void{
+    this.authService.exitUser();
+  }
 }

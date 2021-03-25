@@ -4,6 +4,7 @@ import { USER_LOGIN } from '../../mutations';
 import { Apollo } from "apollo-angular";
 import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { AuthService } from '../../auth';
 
 @Component({
   selector: 'app-user-login',
@@ -18,7 +19,8 @@ export class UserLoginComponent implements OnInit {
     private formBuilder: FormBuilder, 
     private apollo: Apollo, 
     private router: Router,
-    private snackBar: MatSnackBar
+    private snackBar: MatSnackBar,
+    private authService: AuthService
   ) { }
 
   ngOnInit(): void {
@@ -54,6 +56,7 @@ export class UserLoginComponent implements OnInit {
       if(data){
         const user = JSON.parse(JSON.stringify(data));
         localStorage.setItem('user', JSON.stringify(user.login));
+        this.authService.user.next(user.login)
         this.router.navigate(['/']);
       }
     },(error) => {

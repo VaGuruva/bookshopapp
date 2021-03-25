@@ -9,6 +9,7 @@ import { CREATE_ORDER } from '../../mutations';
 import { Apollo } from "apollo-angular";
 import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { AuthService } from '../../auth/auth.service';
 
 @Component({
   selector: 'app-order-book',
@@ -23,7 +24,8 @@ export class OrderBookComponent implements OnInit {
     public dialog: MatDialog,
     private apollo: Apollo,
     private router: Router,
-    private snackBar: MatSnackBar
+    private snackBar: MatSnackBar,
+    private authService: AuthService
   ) { }
 
   book: Book;
@@ -31,8 +33,10 @@ export class OrderBookComponent implements OnInit {
   imgUrl: string
   routeSubscription: Subscription;
   bookServiceSubscription: Subscription;
+  user: any;
 
   ngOnInit(): void {
+    this.user = this.authService.getUser();
     this.getRouteParams();
   }
 
@@ -81,11 +85,17 @@ export class OrderBookComponent implements OnInit {
   }
 
   orderBook(orderInfo: Order) {
+    if(!this.user){
+      this.snackBar.open('Please login or create account to order books.', null, {
+        duration: 3000,
+      });
+    }
     this.apollo.mutate({
       mutation: CREATE_ORDER,
       variables: orderInfo
     }).subscribe(({ data }) => {
     },(error) => {
+      console.log(error)
       this.snackBar.open('Error occured sending book order. Please try again later', null, {
         duration: 2000,
       });

@@ -4,6 +4,7 @@ import { CREATE_USER } from '../../mutations';
 import { Apollo } from "apollo-angular";
 import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { AuthService } from '../../auth';
 
 @Component({
   selector: 'app-user-register',
@@ -18,7 +19,8 @@ export class UserRegisterComponent implements OnInit {
     private formBuilder: FormBuilder, 
     private apollo: Apollo, 
     private router: Router,
-    private snackBar: MatSnackBar
+    private snackBar: MatSnackBar,
+    private authService: AuthService
   ) { }
 
   ngOnInit(): void {
@@ -60,6 +62,7 @@ export class UserRegisterComponent implements OnInit {
       if(data){
         const user = JSON.parse(JSON.stringify(data));
         localStorage.setItem('user', JSON.stringify(user.createUser));
+        this.authService.user.next(user.createUser)
         this.router.navigate(['/']);
       }
     },(error) => {
