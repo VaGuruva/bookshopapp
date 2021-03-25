@@ -17,6 +17,7 @@ export class ViewOrdersComponent implements OnInit {
   dataSource: any[] = [];
   ordersSubscription: Subscription;
   deletOrderSubscription: Subscription;
+  token: string;
 
   constructor(
     private apollo: Apollo, 
@@ -35,6 +36,11 @@ export class ViewOrdersComponent implements OnInit {
         query: GET_ORDERS_BY_USER,
         variables: {
           email: user.email
+        },
+        context: { 
+          headers: { 
+            "Authorization": `Bearer ${user.token}`
+          } 
         }
       })
       .subscribe(
