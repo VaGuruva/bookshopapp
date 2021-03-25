@@ -1,6 +1,6 @@
 # Bookshopapp
 Angular application for displaying books listed books for user ordering
-Screenshot 2021-03-25 at 21.21.05![image](https://user-images.githubusercontent.com/16704814/112531339-20dc4880-8db0-11eb-9cd7-e1d921def771.png)
+![image](https://user-images.githubusercontent.com/16704814/112531339-20dc4880-8db0-11eb-9cd7-e1d921def771.png)
 
 # Use case
 Use accesses site and is able to view books. When they try to orde
