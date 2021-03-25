@@ -3,7 +3,7 @@ Angular application for displaying books listed books for user ordering
 ![image](https://user-images.githubusercontent.com/16704814/112531339-20dc4880-8db0-11eb-9cd7-e1d921def771.png)
 
 # Use case
-Use accesses site and is able to view books. When they try to orde
+Use accesses site and is able to view books. 
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.1.6.
 
@@ -22,10 +22,6 @@ Run `ng build` to build the project. The build artifacts will be stored in the `
 ## Running unit tests
 
 Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
 
 ## Further help
 
