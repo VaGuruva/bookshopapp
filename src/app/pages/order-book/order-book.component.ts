@@ -92,7 +92,12 @@ export class OrderBookComponent implements OnInit {
     }
     this.apollo.mutate({
       mutation: CREATE_ORDER,
-      variables: orderInfo
+      variables: orderInfo,
+      context: { 
+        headers: { 
+          "Authorization": `Bearer ${this.user.token}`
+        } 
+      }
     }).subscribe(({ data }) => {
     },(error) => {
       console.log(error)

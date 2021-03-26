@@ -31,6 +31,7 @@ export class ViewOrdersComponent implements OnInit {
 
   getOrders(): void {
     const user = this.authService.getUser();
+    const token = user? user.token : ""
     this.ordersSubscription = this.apollo
       .query<any>({
         query: GET_ORDERS_BY_USER,
@@ -53,10 +54,17 @@ export class ViewOrdersComponent implements OnInit {
   }
 
   deleteOrder(orderToDelete) {
+    const user = this.authService.getUser();
+    const token = user? user.token : ""
     this.deletOrderSubscription = this.apollo.mutate({
         mutation: DELETE_ORDER,
         variables: {
           number: orderToDelete.number
+        },
+        context: { 
+          headers: { 
+            "Authorization": `Bearer ${token}`
+          } 
         }
       }).subscribe(({ data }) => {
         if(data){
