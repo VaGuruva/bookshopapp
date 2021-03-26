@@ -1,4 +1,9 @@
 # Bookshopapp
+Angular application for displaying books listed books for user ordering
+![image](https://user-images.githubusercontent.com/16704814/112531339-20dc4880-8db0-11eb-9cd7-e1d921def771.png)
+
+# Use case
+Use accesses site and is able to view books. 
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.1.6.
 
@@ -6,9 +11,9 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
-## Code scaffolding
+## APP Data
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+App data comes from the back end api which is accessible via this link https://github.com/VaGuruva/bookshopapi. This serves the listed book data and also manages order placement
 
 ## Build
 
@@ -17,10 +22,6 @@ Run `ng build` to build the project. The build artifacts will be stored in the `
 ## Running unit tests
 
 Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
 
 ## Further help
 
